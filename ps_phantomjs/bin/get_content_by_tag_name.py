@@ -10,7 +10,7 @@ from ps_phantomjs import lib
 
 
 def out_file(url, tag_name, path):
-    driver = lib.ff_automation()
+    driver = lib.pjs_automation()
 
     driver.start_phantomjs(url)
 
