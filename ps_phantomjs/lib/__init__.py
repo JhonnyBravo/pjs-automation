@@ -4,7 +4,7 @@ import codecs
 from selenium import webdriver
 
 
-class ff_automation():
+class pjs_automation():
 
     def __init__(self):
         self.driver = webdriver.PhantomJS()
@@ -56,3 +56,20 @@ class ff_automation():
     def add_content(self, path, value):
         with codecs.open(path, 'a', encoding='utf-8') as file:
             file.write(value + '\n')
+
+    def get_links(self, url, path):
+        self.start_phantomjs(url)
+
+        title = self.get_title()
+        self.set_content(path, title + '\n')
+
+        link_list = self.driver.find_elements_by_tag_name('a')
+
+        for link in link_list:
+            label = link.text.replace('\n', '')
+            href = link.get_attribute('href').replace('\n', '')
+
+            self.add_content(path, '[' + label + ']')
+            self.add_content(path, href + '\n')
+
+        self.stop_phantomjs()
