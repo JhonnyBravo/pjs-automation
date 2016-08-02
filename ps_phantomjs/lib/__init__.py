@@ -69,7 +69,6 @@ class pjs_automation():
             label = link.text.replace('\n', '')
             href = link.get_attribute('href').replace('\n', '')
 
-            self.add_content(path, '[' + label + ']')
-            self.add_content(path, href + '\n')
+            self.add_content(path, label + ' ' + href + '\n')
 
         self.stop_phantomjs()
