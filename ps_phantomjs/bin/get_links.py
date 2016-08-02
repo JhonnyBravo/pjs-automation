@@ -12,8 +12,7 @@ from ps_phantomjs import lib
 def main():
     parser = argparse.ArgumentParser(
         description="""Web ページからリンクを取得し、
-                [label]
-                href
+                label href
                 の形式でファイルへ出力します。""")
 
     parser.add_argument(
